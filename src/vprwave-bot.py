@@ -20,7 +20,10 @@ from telegram import Update, ParseMode, InlineQueryResultArticle, InputTextMessa
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, InlineQueryHandler
 
 #enable logging 
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.INFO, 
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', 
+    filename='files/vaporwave-bot.log', 
+    filemode='a')
 
 #initialize lists with characters 
 
@@ -50,7 +53,8 @@ def help(update, context):
 
 def inline_vaporize_query(update: Update, context: CallbackContext):
     query = update.inline_query.query
-    
+    log = 'New usage from id : ' + update.message.from_user.id + ' - username: ' + update.message.from_user.username
+    logging.info(log)
     if query == '':
         return
 
