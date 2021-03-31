@@ -41,7 +41,7 @@ def main():
 
 def start(update: Update, context: CallbackContext):
     try:
-        log = 'User started bot. id : ' + update.message.from_user.id + ' - username: ' + update.message.from_user.username
+        log = 'User started bot. id : ' + str(update.message.from_user.id) + ' - username: ' + update.message.from_user.username
         logging.info(log)
     except:
         logging.error('exception start method', exc_info=True)
@@ -60,7 +60,7 @@ def help(update, context):
 def inline_vaporize_query(update: Update, context: CallbackContext):
     query = update.inline_query.query
     try:
-        log = 'New usage from id : ' + update.inline_query.from_user.id + ' - username: ' + update.inline_query.from_user.username
+        log = 'New usage from id : ' + str(update.inline_query.from_user.id) + ' - username: ' + update.inline_query.from_user.username
         logging.info(log)
     except:
         logging.error('exception inline vaporize method', exc_info=True)
