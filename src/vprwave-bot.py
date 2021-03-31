@@ -40,6 +40,12 @@ def main():
     updater.idle()
 
 def start(update: Update, context: CallbackContext):
+    try:
+        log = 'User started bot. id : ' + update.message.from_user.id + ' - username: ' + update.message.from_user.username
+        logging.info(log)
+    except:
+        logging.ERROR('error line 43')
+
     update.message.reply_text(
         utils.start_msg,
         parse_mode=ParseMode.MARKDOWN
@@ -53,8 +59,11 @@ def help(update, context):
 
 def inline_vaporize_query(update: Update, context: CallbackContext):
     query = update.inline_query.query
-    log = 'New usage from id : ' + update.message.from_user.id + ' - username: ' + update.message.from_user.username
-    logging.info(log)
+    try:
+        log = 'New usage from id : ' + update.inline_query.from_user.id + ' - username: ' + update.inline_query.from_user.username
+        logging.info(log)
+    except:
+        logging.error('ERROR line 62')
     if query == '':
         return
 
