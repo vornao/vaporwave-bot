@@ -1,0 +1,5 @@
+#!/bin/bash
+cd ~/B0T 
+vprwave-bot-stop
+git pull
+vprwave-bot-start

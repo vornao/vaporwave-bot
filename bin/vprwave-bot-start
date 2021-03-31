@@ -1,0 +1,8 @@
+#!/bin/bash
+cd /home/ubuntu/vaporwave-bot/
+nohup python3 src/vprwave-bot.py &
+echo "v a p o r w a v e  bot started!"
+echo $$ > PIDFILE.PID
+val=$(<PIDFILE.PID)
+val=$((val+1))
+echo "$val" > PIDFILE.PID

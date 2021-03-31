@@ -12,8 +12,8 @@ import logging
 from telegram.inline.inlinequery import InlineQuery
 
 from telegram.inline.inlinequeryresult import InlineQueryResult
-import config
 import utils
+import config
 
 from uuid import uuid4
 from telegram import Update, ParseMode, InlineQueryResultArticle, InputTextMessageContent

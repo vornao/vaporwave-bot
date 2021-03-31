@@ -1,0 +1,4 @@
+#!/bin/bash
+kill -s SIGINT $(cat ~/vaporwave-bot/PIDFILE.PID)
+
+echo "bot stopped!"
