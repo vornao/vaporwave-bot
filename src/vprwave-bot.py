@@ -44,7 +44,7 @@ def start(update: Update, context: CallbackContext):
         log = 'User started bot. id : ' + str(update.message.from_user.id) + ' - username: ' + update.message.from_user.username
         logging.info(log)
     except:
-        logging.error('exception start method', exc_info=True)
+        logging.exception('exception start method', exc_info=True)
 
     update.message.reply_text(
         utils.start_msg,
@@ -63,7 +63,7 @@ def inline_vaporize_query(update: Update, context: CallbackContext):
         log = 'New usage from id : ' + str(update.inline_query.from_user.id) + ' - username: ' + update.inline_query.from_user.username
         logging.info(log)
     except:
-        logging.error('exception inline vaporize method', exc_info=True)
+        logging.exception('exception inline vaporize method', exc_info=True)
     if query == '':
         return
 
