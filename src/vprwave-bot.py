@@ -13,7 +13,9 @@ from telegram.inline.inlinequery import InlineQuery
 
 from telegram.inline.inlinequeryresult import InlineQueryResult
 import utils
+import threading
 import config
+import userutils
 
 from uuid import uuid4
 from telegram import Update, ParseMode, InlineQueryResultArticle, InputTextMessageContent
@@ -29,6 +31,11 @@ logging.basicConfig(level=logging.INFO,
 
 def main():
     print("Welcome to vprwv-bot")
+
+    userutils.init_cache()
+    ucheck = threading.Thread(target=userutils.usercheck, daemon=True)
+    ucheck.start()
+
     updater = Updater(config.BOT_TOKEN)
     dispatcher = updater.dispatcher
 
@@ -60,10 +67,10 @@ def help(update, context):
 def inline_vaporize_query(update: Update, context: CallbackContext):
     query = update.inline_query.query
     try:
-        log = 'New usage from id : ' + str(update.inline_query.from_user.id) + ' - username: ' + update.inline_query.from_user.username
-        logging.info(log)
+        userutils.queue.put(update.inline_query.from_user.username)
     except:
-        logging.exception('exception inline vaporize method', exc_info=True)
+        logging.exception("Exception!", exc_info=True)
+
     if query == '':
         return
 
