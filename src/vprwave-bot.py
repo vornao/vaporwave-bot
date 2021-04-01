@@ -80,9 +80,10 @@ def inline_vaporize_query(update: Update, context: CallbackContext):
     results = [
         InlineQueryResultArticle(
             id=str(uuid4()), 
-            input_message_content=InputTextMessageContent(x),
-            title = x,
-            description=random.choice(utils.sparkles))
+            input_message_content= InputTextMessageContent(x),
+            title= x,
+            description= random.choice(utils.sparkles),
+            )
             for x in ans
         ]
     update.inline_query.answer(results, cache_time = utils.inline_cache_time)
