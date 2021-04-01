@@ -6,7 +6,7 @@ Usage: from your message input bar type:\n\n\
 ***@vprwavebot your-text-here***\n\n\
 Send /help for more informations'
 
-help_msg = 'This is an inline bot, use it from the input bar from any chat!\n\n\
+help_msg = 'This is an inline bot, use it from the input bar of any chat!\n\n\
 *@vprwavebot type-here-your-message\n\n\
 *A prompt will now show, tap on the aesthetic quote you like\u2728\n\n\
 Under Construction!'
