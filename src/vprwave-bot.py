@@ -76,7 +76,8 @@ def inline_vaporize_query(update: Update, context: CallbackContext):
             title = x)
             for x in ans
         ]
-    update.inline_query.answer(results)
+    update.inline_query.answer(results, cache_time = utils.inline_cache_time)
+
 
 
 if __name__ == '__main__':

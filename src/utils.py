@@ -1,5 +1,7 @@
 import random
 
+inline_cache_time = 1
+
 start_msg = '\
 ₓ˚. ୭ ˚○◦˚.˚◦○˚ ୧ .˚ₓ\nWelcome to VaporwaveBot!\nₓ˚. ୭ ˚○◦˚.˚◦○˚ ୧ .˚ₓ\n\n\
 Usage: from your message input bar type:\n\n\
