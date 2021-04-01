@@ -8,18 +8,19 @@
 
 #⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ 
 
-import logging
-from telegram.inline.inlinequery import InlineQuery
 
+from telegram.inline.inlinequery import InlineQuery
 from telegram.inline.inlinequeryresult import InlineQueryResult
+from uuid import uuid4
+from telegram import Update, ParseMode, InlineQueryResultArticle, InputTextMessageContent
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, InlineQueryHandler
+
+import logging
+import random
 import utils
 import threading
 import config
 import userutils
-
-from uuid import uuid4
-from telegram import Update, ParseMode, InlineQueryResultArticle, InputTextMessageContent
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, InlineQueryHandler
 
 #enable logging 
 logging.basicConfig(level=logging.INFO, 
@@ -30,7 +31,7 @@ logging.basicConfig(level=logging.INFO,
 #initialize lists with characters 
 
 def main():
-    print("Welcome to vprwv-bot")
+    logging.info("VPRWV BOT STARTED")
 
     userutils.init_cache()
     ucheck = threading.Thread(target=userutils.usercheck, daemon=True)
@@ -74,13 +75,14 @@ def inline_vaporize_query(update: Update, context: CallbackContext):
     if query == '':
         return
 
-    ans = [utils.hiramize(query), utils.emojize(query), utils.sparkleize(query) ]
+    ans = [utils.hiramize(query), utils.emojize(query), utils.sparkleize(query)]
 
     results = [
         InlineQueryResultArticle(
             id=str(uuid4()), 
             input_message_content=InputTextMessageContent(x),
-            title = x)
+            title = x,
+            description=random.choice(utils.sparkles))
             for x in ans
         ]
     update.inline_query.answer(results, cache_time = utils.inline_cache_time)
