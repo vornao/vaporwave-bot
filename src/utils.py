@@ -13,6 +13,12 @@ help_msg = 'This is an inline bot, use it from the input bar of any chat!\n\n\
 *A prompt will now show, tap on the aesthetic quote you like\u2728\n\n\
 Under Construction!'
 
+privacy_msg = """
+              - This bot does not store, in any way, user's private messages, 
+                as well as inline requests' private text. \n 
+              - Only chat ids and usernames are stored for bot usage monitoring and not shared with anyone. '
+              """
+
 
 
 ascii_akward = ['(ʘ_ʘ)', '(ʘ‿ʘ)', '(ಠ_ಠ)', 
@@ -21,7 +27,8 @@ ascii_akward = ['(ʘ_ʘ)', '(ʘ‿ʘ)', '(ಠ_ಠ)',
 sparkles = ['✧･ﾟ: *✧･ﾟ:*',  '*:･ﾟ✧*:･ﾟ✧', 'ₓ˚. ୭ ˚○◦˚.˚◦○˚ ୧ .˚ₓ','｡･:*:･ﾟ★,｡･:*:･ﾟ☆', '｡･:*:･ﾟ★,｡･:*:･ﾟ☆','‧͙⁺˚*･༓☾', '☽༓･*˚⁺‧͙']
 emoji_sparkles = '\u2728'
 fullwidth = {i: chr(i + 0xFEE0) for i in range(0x21, 0x7F)}
-hiragana  = [chr(i) for i in range(0x3040, 0x309f)]
+hiragana = [chr(i) for i in range(0x3040, 0x309f)]
+
 
 def random_hiragana() -> str:
     s = ''
