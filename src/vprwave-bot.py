@@ -27,7 +27,7 @@ import userutils
 def main():
     # enable logging
     try:
-        os.mkdir('files')
+        os.mkdir('../files')
     except:
         print('directory already exists')
 
