@@ -33,7 +33,7 @@ def main():
 
     logging.basicConfig(level=logging.INFO,
                         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                        filename='files/vaporwave-bot.log',
+                        filename='../files/vaporwave-bot.log',
                         filemode='a+')
 
     logging.info("VPRWV BOT STARTED")
