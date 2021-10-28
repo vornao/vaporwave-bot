@@ -27,13 +27,13 @@ import userutils
 def main():
     # enable logging
     try:
-        os.mkdir('../files')
+        os.mkdir(config.FILES_PATH)
     except:
         print('directory already exists')
 
     logging.basicConfig(level=logging.INFO,
                         format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                        filename='../files/vaporwave-bot.log',
+                        filename= config.FILES_PATH + 'vaporwave-bot.log',
                         filemode='a+')
 
     logging.info("VPRWV BOT STARTED")
