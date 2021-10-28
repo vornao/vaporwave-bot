@@ -7,7 +7,7 @@
 # Japanese hirigana characters go from 0x3040 to 0x309f
 
 # ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚ ⋆ ˚｡⋆୨୧˚
-
+import os
 
 from telegram.inline.inlinequery import InlineQuery
 from telegram.inline.inlinequeryresult import InlineQueryResult
@@ -22,15 +22,20 @@ import config
 import threading
 import userutils
 
-# enable logging
-logging.basicConfig(level=logging.INFO,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                    filename='files/vaporwave-bot.log',
-                    filemode='a')
-
 
 # initialize lists with characters
 def main():
+    # enable logging
+    try:
+        os.mkdir('files')
+    except:
+        print('directory already exists')
+
+    logging.basicConfig(level=logging.INFO,
+                        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                        filename='files/vaporwave-bot.log',
+                        filemode='a+')
+
     logging.info("VPRWV BOT STARTED")
 
     userutils.init_cache()
