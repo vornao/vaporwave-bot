@@ -1,5 +1,0 @@
-#!/bin/bash
-cd ~/vaporwave-bot
-vprwave-bot-stop
-git pull
-vprwave-bot-start
