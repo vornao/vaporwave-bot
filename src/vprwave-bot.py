@@ -12,8 +12,20 @@ import os
 from telegram.inline.inlinequery import InlineQuery
 from telegram.inline.inlinequeryresult import InlineQueryResult
 from uuid import uuid4
-from telegram import Update, ParseMode, InlineQueryResultArticle, InputTextMessageContent
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext, InlineQueryHandler
+from telegram import (
+    Update,
+    ParseMode,
+    InlineQueryResultArticle,
+    InputTextMessageContent,
+)
+from telegram.ext import (
+    Updater,
+    CommandHandler,
+    MessageHandler,
+    Filters,
+    CallbackContext,
+    InlineQueryHandler,
+)
 
 import logging
 import random
@@ -29,12 +41,14 @@ def main():
     try:
         os.mkdir(config.FILES_PATH)
     except:
-        print('directory already exists')
+        print("directory already exists")
 
-    logging.basicConfig(level=logging.INFO,
-                        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-                        filename= config.FILES_PATH + 'vaporwave-bot.log',
-                        filemode='a+')
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+        filename=config.FILES_PATH + "vaporwave-bot.log",
+        filemode="a+",
+    )
 
     logging.info("VPRWV BOT STARTED")
 
@@ -45,9 +59,9 @@ def main():
     updater = Updater(config.BOT_TOKEN)
     dispatcher = updater.dispatcher
 
-    dispatcher.add_handler(CommandHandler('start', start))
-    dispatcher.add_handler(CommandHandler('help', help))
-    dispatcher.add_handler(CommandHandler('privacy', privacy_message))
+    dispatcher.add_handler(CommandHandler("start", start))
+    dispatcher.add_handler(CommandHandler("help", help))
+    dispatcher.add_handler(CommandHandler("privacy", privacy_message))
     dispatcher.add_handler(InlineQueryHandler(inline_vaporize_query))
 
     updater.start_polling()
@@ -56,30 +70,25 @@ def main():
 
 def start(update: Update, context: CallbackContext):
     try:
-        log = 'User started bot. id : ' + str(
-            update.message.from_user.id) + ' - username: ' + update.message.from_user.username
+        log = (
+            "User started bot. id : "
+            + str(update.message.from_user.id)
+            + " - username: "
+            + update.message.from_user.username
+        )
         logging.info(log)
     except:
-        logging.exception('exception start method', exc_info=True)
+        logging.exception("exception start method", exc_info=True)
 
-    update.message.reply_text(
-        utils.start_msg,
-        parse_mode=ParseMode.MARKDOWN
-    )
+    update.message.reply_text(utils.start_msg, parse_mode=ParseMode.MARKDOWN)
 
 
 def help(update, context):
-    update.message.reply_text(
-        utils.help_msg,
-        parse_mode=ParseMode.MARKDOWN
-    )
+    update.message.reply_text(utils.help_msg, parse_mode=ParseMode.MARKDOWN)
 
 
 def privacy_message(update, context):
-    update.message.reply_text(
-        utils.privacy_msg,
-        parse_mode=ParseMode.MARKDOWN
-    )
+    update.message.reply_text(utils.privacy_msg, parse_mode=ParseMode.MARKDOWN)
 
 
 def inline_vaporize_query(update: Update, context: CallbackContext):
@@ -89,7 +98,7 @@ def inline_vaporize_query(update: Update, context: CallbackContext):
     except:
         logging.exception("Exception!", exc_info=True)
 
-    if query == '':
+    if query == "":
         return
 
     ans = [utils.hiramize(query), utils.emojize(query), utils.sparkleize(query)]
@@ -106,5 +115,5 @@ def inline_vaporize_query(update: Update, context: CallbackContext):
     update.inline_query.answer(results, cache_time=utils.inline_cache_time)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

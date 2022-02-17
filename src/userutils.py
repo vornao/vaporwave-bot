@@ -1,6 +1,6 @@
-
 import config
 import queue
+
 cache = []
 queue = queue.Queue()
 
@@ -27,4 +27,3 @@ def usercheck():
             with open(config.BOT_TOKEN + 'userlist.txt', "a") as f:
                 f.write(user + '\n')
     """
-
