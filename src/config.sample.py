@@ -1,1 +1,2 @@
 BOT_TOKEN = "YOUR-BOT-TOKEN"
+FILES_PATH = "../files"

@@ -42,32 +42,32 @@ fullwidth = {i: chr(i + 0xFEE0) for i in range(0x21, 0x7F)}
 hiragana = [chr(i) for i in range(0x3040, 0x309F)]
 
 
-def random_hiragana() -> str:
+async def random_hiragana() -> str:
     s = ""
-    for x in range(3):
+    async for x in range(3):
         s += random.choice(hiragana)
     return s
 
 
-def vaporize(s: str) -> str:
+async def vaporize(s: str) -> str:
     vaporized = s.translate(fullwidth)
     return vaporized
 
 
-def hiramize(s: str) -> str:
+async def hiramize(s: str) -> str:
     hiramized = vaporize(s)
     hiramized += "  "
     hiramized += random_hiragana()
     return hiramized
 
 
-def emojize(s: str) -> str:
+async def emojize(s: str) -> str:
     emojized = vaporize(s)
     emojized += "  " + random.choice(ascii_akward)
     return emojized
 
 
-def sparkleize(s: str) -> str:
+async def sparkleize(s: str) -> str:
     sparkleized = emoji_sparkles + "  "
     sparkleized += vaporize(s) + "  "
     sparkleized += emoji_sparkles
