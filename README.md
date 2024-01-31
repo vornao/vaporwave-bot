@@ -4,12 +4,16 @@ Simple inline Telegram bot to aestheticize your chats!
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 ### Requirements
-- python 3.6.x
+- Python 3.8.x
 - ```python-telegram-bot``` installed (```pip3 install python-telegram-bot```)
 ### Installation instructions
 - Create bot with botfather and enable inline feature
-- Copy your brand new token to config.py (make sure you renamed ```config.sample.py``` to ```config.py```
+- Copy your brand new token to config.py (make sure you renamed ```config.sample.py``` to ```config.py```)
 - Start bot with ```python3 vprwave-bot.py```
+
+### Dockerfile
+- Build image with ```docker build -t vprwave-bot .```
+- Run container with ```docker run -d --name vprwave-bot vprwave-bot```
 
 ### Try it yourself with [@vprwavebot (working bot link)](t.me/vprwavebot)!
 

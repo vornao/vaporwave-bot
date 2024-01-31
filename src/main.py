@@ -20,8 +20,12 @@ from telegram import (
     InlineQueryResultArticle,
     InputTextMessageContent,
 )
-from telegram.ext import ApplicationBuilder, CommandHandler, CallbackContext, InlineQueryHandler
-
+from telegram.ext import (
+    ApplicationBuilder,
+    CommandHandler,
+    CallbackContext,
+    InlineQueryHandler,
+)
 
 
 async def start(update: Update, context: CallbackContext):
@@ -36,11 +40,11 @@ async def start(update: Update, context: CallbackContext):
     except:
         logging.exception("exception start method", exc_info=True)
 
-    update.message.reply_text(utils.start_msg)
+    await update.message.reply_text(utils.start_msg)
 
 
 async def help(update, context):
-    update.message.reply_text(utils.help_msg)
+    await update.message.reply_text(utils.help_msg)
 
 
 async def privacy_message(update, context):
@@ -82,11 +86,9 @@ if __name__ == "__main__":
 
     logging.info("Vaporwave Bot Started")
 
-    
     app = ApplicationBuilder().token(config.BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CommandHandler("help", help))
     app.add_handler(CommandHandler("privacy", privacy_message))
     app.add_handler(InlineQueryHandler(inline_vaporize_query))
     app.run_polling()
-

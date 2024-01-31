@@ -23,7 +23,7 @@ ascii_akward = [
     "(ಠ_ಠ)",
     "(◕_◕)",
     "(◕‿◕)",
-    "\(◕ ◡ ◕\)",
+    "\\(◕ ◡ ◕\\)",
     "(¬_¬)",
     "ᶘ ᵒᴥᵒᶅ",
     "(´・ω・｀)",
@@ -42,32 +42,32 @@ fullwidth = {i: chr(i + 0xFEE0) for i in range(0x21, 0x7F)}
 hiragana = [chr(i) for i in range(0x3040, 0x309F)]
 
 
-async def random_hiragana() -> str:
+def random_hiragana() -> str:
     s = ""
-    async for x in range(3):
+    for x in range(3):
         s += random.choice(hiragana)
     return s
 
 
-async def vaporize(s: str) -> str:
+def vaporize(s: str) -> str:
     vaporized = s.translate(fullwidth)
     return vaporized
 
 
-async def hiramize(s: str) -> str:
+def hiramize(s: str) -> str:
     hiramized = vaporize(s)
     hiramized += "  "
     hiramized += random_hiragana()
     return hiramized
 
 
-async def emojize(s: str) -> str:
+def emojize(s: str) -> str:
     emojized = vaporize(s)
     emojized += "  " + random.choice(ascii_akward)
     return emojized
 
 
-async def sparkleize(s: str) -> str:
+def sparkleize(s: str) -> str:
     sparkleized = emoji_sparkles + "  "
     sparkleized += vaporize(s) + "  "
     sparkleized += emoji_sparkles
